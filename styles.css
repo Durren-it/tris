@@ -12,17 +12,22 @@ body {
     height: 100vh;
     margin: 0;
     background-color: blue;
+    position: relative;
 }
 
+
 .container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-gap: 5px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 50px;
 }
 
 .cell {
