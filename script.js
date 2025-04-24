@@ -8,9 +8,9 @@ let gameState = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
 
 // Gestione del tema
-themeSelector.addEventListener('change', function () {
+function applyTheme(theme) {
     document.body.className = '';
-    switch (this.value) {
+    switch (theme) {
         case 'dark':
             document.body.classList.add('dark-theme');
             break;
@@ -23,7 +23,17 @@ themeSelector.addEventListener('change', function () {
         default:
             document.body.classList.add('default-theme');
     }
+    // Salva il tema selezionato
+    localStorage.setItem('selectedTheme', theme);
+    themeSelector.value = theme;
+}
+themeSelector.addEventListener('change', function () {
+    applyTheme(this.value);
 });
+
+// Carica il tema salvato (o default)
+const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+applyTheme(savedTheme);
 
 const winningConditions = [
     [0, 1, 2],
