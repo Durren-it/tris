@@ -15,7 +15,6 @@ body {
     position: relative;
 }
 
-
 .container {
     display: flex;
     flex-direction: column;
@@ -54,6 +53,11 @@ body {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+
+#stats {
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 @media (max-width: 600px) {

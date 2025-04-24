@@ -46,6 +46,7 @@ const winningConditions = [
     [2, 4, 6]
 ];
 
+// Funzione dei click
 function handleCellClick(event) {
     const clickedCell = event.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
@@ -58,9 +59,18 @@ function handleCellClick(event) {
     clickedCell.textContent = currentPlayer;
 
     checkResult();
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    if (gameActive) {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
+    }
 }
 
+// Gestione nome player
+function getPlayerName(symbol) {
+    return symbol === 'X' ? 'Giocatore 1 - X' : 'Giocatore 2 - O';
+}
+
+// Funzione di controllo stato gioco
 function checkResult() {
     let roundWon = false;
     for (let i = 0; i < winningConditions.length; i++) {
@@ -72,7 +82,10 @@ function checkResult() {
     }
 
     if (roundWon) {
-        statusDisplay.textContent = `Giocatore ${currentPlayer} ha vinto!`;
+        statusDisplay.textContent = `${getPlayerName(currentPlayer)} ha vinto!`;
+        wins[currentPlayer]++;
+        localStorage.setItem(`wins${currentPlayer}`, wins[currentPlayer]);
+        updateStatsDisplay();
         gameActive = false;
         return;
     }
@@ -84,19 +97,37 @@ function checkResult() {
         return;
     }
 
-    statusDisplay.textContent = `Turno del giocatore ${currentPlayer}`;
+    //statusDisplay.textContent = `Turno del giocatore ${currentPlayer}`;
 }
 
+// Storage delle vittorie
+let wins = {
+    X: parseInt(localStorage.getItem('winsX')) || 0,
+    O: parseInt(localStorage.getItem('winsO')) || 0
+};
+
+const winsXDisplay = document.getElementById('winsX');
+const winsODisplay = document.getElementById('winsO');
+
+function updateStatsDisplay() {
+    winsXDisplay.textContent = wins.X;
+    winsODisplay.textContent = wins.O;
+}
+
+// Funzione reset
 function handleReset() {
     gameState = ['', '', '', '', '', '', '', '', ''];
     gameActive = true;
     currentPlayer = 'X';
-    statusDisplay.textContent = `Turno del giocatore ${currentPlayer}`;
+    statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
     cells.forEach(cell => cell.textContent = '');
 }
 
+// Gestione del gioco
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
 resetButton.addEventListener('click', handleReset);
 
-statusDisplay.textContent = `Turno del giocatore ${currentPlayer}`;
+statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
 
+// Chiamata per mostrare vittorie
+updateStatsDisplay();
