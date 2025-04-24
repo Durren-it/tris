@@ -3,6 +3,7 @@ const cells = document.querySelectorAll('.cell');
 const resetButton = document.getElementById('resetButton');
 const statusDisplay = document.getElementById('status');
 const themeSelector = document.getElementById('theme');
+const resetScoreButton = document.getElementById('resetScoreButton');
 let currentPlayer = 'X';
 let gameState = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
@@ -114,7 +115,15 @@ function updateStatsDisplay() {
     winsODisplay.textContent = wins.O;
 }
 
-// Funzione reset
+// Funzioni reset
+
+function resetScores() {
+    wins = { X: 0, O: 0 };
+    localStorage.setItem('winsX', '0');
+    localStorage.setItem('winsO', '0');
+    updateStatsDisplay();
+}
+
 function handleReset() {
     gameState = ['', '', '', '', '', '', '', '', ''];
     gameActive = true;
@@ -125,6 +134,7 @@ function handleReset() {
 
 // Gestione del gioco
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+resetScoreButton.addEventListener('click', resetScores);
 resetButton.addEventListener('click', handleReset);
 
 statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;

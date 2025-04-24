@@ -44,7 +44,27 @@ body {
     background-color: #ddd;
 }
 
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    margin: 20px auto 20px auto;
+    gap: 10px;
+}
+
+.button-row button {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 #resetButton {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#resetScoreButton {
     padding: 10px 20px;
     font-size: 16px;
 }
