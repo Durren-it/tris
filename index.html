@@ -6,7 +6,17 @@
     <title>Gioco del Tris</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="default-theme">
+    <div class="theme-selection">
+        <label for="theme">Tema</label>
+        <select id="theme">
+            <option value="default">Default</option>
+            <option value="dark">Dark Mode</option>
+            <option value="rosee">Roseo</option>
+            <option value="violet">Violetto</option>
+        </select>
+    </div>
+    
     <div class="container">
         <h1>Gioco del Tris</h1>
         <div id="board" class="board">

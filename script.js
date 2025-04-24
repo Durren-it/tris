@@ -2,9 +2,28 @@ const board = document.getElementById('board');
 const cells = document.querySelectorAll('.cell');
 const resetButton = document.getElementById('resetButton');
 const statusDisplay = document.getElementById('status');
+const themeSelector = document.getElementById('theme');
 let currentPlayer = 'X';
 let gameState = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
+
+// Gestione del tema
+themeSelector.addEventListener('change', function () {
+    document.body.className = '';
+    switch (this.value) {
+        case 'dark':
+            document.body.classList.add('dark-theme');
+            break;
+        case 'rosee':
+            document.body.classList.add('rosee-theme');
+            break;
+        case 'violet':
+            document.body.classList.add('violet-theme');
+            break;
+        default:
+            document.body.classList.add('default-theme');
+    }
+});
 
 const winningConditions = [
     [0, 1, 2],
