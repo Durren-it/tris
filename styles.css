@@ -15,6 +15,20 @@ body {
     position: relative;
 }
 
+.symbol-selection {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    z-index: 10;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -187,4 +201,19 @@ body.violet-theme .theme-selection {
 
 body.violet-theme .theme-selection label {
     color: #6a1b9a; 
+}
+
+body.dark-theme .symbol-selection {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+body.rosee-theme .symbol-selection {
+    background-color: #fff0f5;
+    color: #4a148c;
+}
+
+body.violet-theme .symbol-selection {
+    background-color: #f3e5f5;
+    color: #6a1b9a;
 }

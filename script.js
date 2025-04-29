@@ -6,6 +6,10 @@ const themeSelector = document.getElementById('theme');
 const resetScoreButton = document.getElementById('resetScoreButton');
 const logList = document.getElementById('logList');
 let currentPlayer = 'X';
+let playerSymbols = {
+    X: 'X',
+    O: 'O'
+  };
 let gameState = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
 
@@ -37,6 +41,28 @@ themeSelector.addEventListener('change', function () {
 const savedTheme = localStorage.getItem('selectedTheme') || 'default';
 applyTheme(savedTheme);
 
+// Gestore di scelta dei simboli
+const symbolXInput = document.getElementById('symbolX');
+const symbolOInput = document.getElementById('symbolO');
+const applySymbolsButton = document.getElementById('applySymbols');
+
+applySymbolsButton.addEventListener('click', () => {
+  const newSymbolX = symbolXInput.value.trim() || 'X';
+  const newSymbolO = symbolOInput.value.trim() || 'O';
+
+  // Evita che i simboli siano identici
+  if (newSymbolX === newSymbolO) {
+    alert('I simboli dei due giocatori devono essere diversi.');
+    return;
+  }
+
+  playerSymbols.X = newSymbolX;
+  playerSymbols.O = newSymbolO;
+
+  // Reimposta il gioco con i nuovi simboli
+  handleReset();
+});
+
 const winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -58,7 +84,7 @@ function handleCellClick(event) {
     }
 
     gameState[clickedCellIndex] = currentPlayer;
-    clickedCell.textContent = currentPlayer;
+    clickedCell.textContent = playerSymbols[currentPlayer];
     addMoveToLog(currentPlayer, clickedCellIndex);
 
     checkResult();
@@ -89,8 +115,8 @@ function addMoveToLog(player, index) {
 
 // Gestione nome player
 function getPlayerName(symbol) {
-    return symbol === 'X' ? 'Giocatore 1 - X' : 'Giocatore 2 - O';
-}
+    return symbol === 'X' ? `Giocatore 1 - ${playerSymbols.X}` : `Giocatore 2 - ${playerSymbols.O}`;
+  }
 
 // Funzione di controllo stato gioco
 function checkResult() {
