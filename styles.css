@@ -122,6 +122,12 @@ body {
     background-color: red !important;
 }
 
+.winning-cell {
+    background-color: gold !important;
+    border: 3px solid orange;
+    transition: background-color 0.3s, border 0.3s;
+}
+
 @media (max-width: 600px) {
     .cell {
         font-size: 8px;
@@ -216,4 +222,27 @@ body.rosee-theme .symbol-selection {
 body.violet-theme .symbol-selection {
     background-color: #f3e5f5;
     color: #6a1b9a;
+}
+
+.default-theme .winning-cell {
+    background-color: #d1ffd1;
+    border: 2px solid #4CAF50;
+}
+
+.dark-theme .winning-cell {
+    background-color: #444;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.rosee-theme .winning-cell {
+    background-color: #ffcce0;
+    border: 2px solid #cc3366;
+    color: #660033;
+}
+
+.violet-theme .winning-cell {
+    background-color: #e0ccff;
+    border: 2px solid #7b4db0;
+    color: #3a1d64;
 }

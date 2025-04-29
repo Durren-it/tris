@@ -121,15 +121,22 @@ function getPlayerName(symbol) {
 // Funzione di controllo stato gioco
 function checkResult() {
     let roundWon = false;
+    let winningCombo = [];
+
     for (let i = 0; i < winningConditions.length; i++) {
-        const [a, b, c] = winningConditions[i];
+    const [a, b, c] = winningConditions[i];
         if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
             roundWon = true;
+            winningCombo = [a, b, c];
             break;
-        }
     }
+}
 
     if (roundWon) {
+        winningCombo.forEach(index => {
+            cells[index].classList.add('winning-cell');
+        });
+
         statusDisplay.textContent = `${getPlayerName(currentPlayer)} ha vinto!`;
         wins[currentPlayer]++;
         localStorage.setItem(`wins${currentPlayer}`, wins[currentPlayer]);
@@ -176,7 +183,10 @@ function handleReset() {
     gameActive = true;
     currentPlayer = 'X';
     statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
-    cells.forEach(cell => cell.textContent = '');
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('winning-cell');
+    });
     logList.innerHTML = '';
 }
 
