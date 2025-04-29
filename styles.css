@@ -80,6 +80,34 @@ body {
     font-size: 16px;
 }
 
+#moveLog {
+    margin-top: 20px;
+    text-align: left;
+    max-width: 300px;
+}
+
+#logList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+#logList li {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#logList li:hover {
+    background-color: #f0f0f0;
+}
+
+.cell.highlight {
+    background-color: red !important;
+}
+
 @media (max-width: 600px) {
     .cell {
         font-size: 8px;
@@ -132,4 +160,31 @@ body.violet-theme {
 body.violet-theme .cell {
     background-color: #e1bee7;
     color: #6a1b9a;
+}
+
+.theme-selection label {
+    color: black;
+}
+
+body.dark-theme .theme-selection {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .theme-selection label {
+    color: white;
+}
+
+body.rosee-theme .theme-selection {
+    background-color: #ffe4e1; 
+}
+body.rosee-theme .theme-selection label {
+    color: #4a148c;
+}
+
+body.violet-theme .theme-selection {
+    background-color: #f3e5f5;
+}
+
+body.violet-theme .theme-selection label {
+    color: #6a1b9a; 
 }

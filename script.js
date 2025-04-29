@@ -4,6 +4,7 @@ const resetButton = document.getElementById('resetButton');
 const statusDisplay = document.getElementById('status');
 const themeSelector = document.getElementById('theme');
 const resetScoreButton = document.getElementById('resetScoreButton');
+const logList = document.getElementById('logList');
 let currentPlayer = 'X';
 let gameState = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
@@ -58,12 +59,32 @@ function handleCellClick(event) {
 
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.textContent = currentPlayer;
+    addMoveToLog(currentPlayer, clickedCellIndex);
 
     checkResult();
     if (gameActive) {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
     }
+}
+
+// Funzione di log delle mosse
+function addMoveToLog(player, index) {
+    const row = Math.floor(index / 3) + 1;
+    const col = (index % 3) + 1;
+    const li = document.createElement('li');
+    li.textContent = `${getPlayerName(player)} → Riga ${row}, Colonna ${col}`;
+    li.dataset.index = index;
+
+    li.addEventListener('mouseenter', () => {
+        cells[index].classList.add('highlight');
+    });
+
+    li.addEventListener('mouseleave', () => {
+        cells[index].classList.remove('highlight');
+    });
+
+    logList.appendChild(li);
 }
 
 // Gestione nome player
@@ -130,6 +151,7 @@ function handleReset() {
     currentPlayer = 'X';
     statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
     cells.forEach(cell => cell.textContent = '');
+    logList.innerHTML = '';
 }
 
 // Gestione del gioco
