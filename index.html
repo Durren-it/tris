@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gioco del Tris</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="default-theme">
-    <div class="theme-selection">
-        <label for="theme">Tema</label>
-        <select id="theme">
-            <option value="default">Default</option>
-            <option value="dark">Dark Mode</option>
-            <option value="rosee">Roseo</option>
-            <option value="violet">Violetto</option>
-        </select>
-    </div>
-
-    <div class="symbol-selection">
-        <label for="symbolX">Simbolo Giocatore 1:</label>
-        <input type="text" id="symbolX" maxlength="1" value="X">
-        <label for="symbolO">Simbolo Giocatore 2:</label>
-        <input type="text" id="symbolO" maxlength="1" value="O">
-        <button id="applySymbols">Applica</button>
-    </div>
-
-    <div class="container">
-        <h1>Gioco del Tris</h1>
-        <div id="board" class="board">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gioco del Tris</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="default-theme">
+        <div class="theme-selection">
+            <label for="theme">Tema</label>
+            <select id="theme">
+                <option value="default">Default</option>
+                <option value="dark">Dark Mode</option>
+                <option value="rosee">Roseo</option>
+                <option value="violet">Violetto</option>
+            </select>
         </div>
-        <div class="buttons-row">
-            <button id="resetScoreButton">Reset Punteggio</button>
-            <button id="resetButton">Reset Partita</button>
+
+        <div class="symbol-selection">
+            <label for="symbolX">Simbolo Giocatore 1:</label>
+            <input type="text" id="symbolX" maxlength="1" value="X">
+            <label for="symbolO">Simbolo Giocatore 2:</label>
+            <input type="text" id="symbolO" maxlength="1" value="O">
+            <button id="applySymbols">Applica</button>
         </div>
-        <p id="status"></p>
-        <div id="stats">
-            <p>
-                Vittorie Giocatore 1: <span id="winsX">0</span>
-            </p>
-            <p>
-                Vittorie Giocatore 2: <span id="winsO">0</span>
-            </p>
-            <div id="moveLog">
-                <h3>Log delle mosse</h3>
-                <ul id="logList"></ul>
+
+        <div class="container">
+            <h1>Gioco del Tris</h1>
+            <div id="board" class="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
             </div>
-        </div>        
-    </div>
-    <script src="script.js"></script>
-</body>
+            <div class="buttons-row">
+                <button id="resetScoreButton">Reset Punteggio</button>
+                <button id="resetButton">Reset Partita</button>
+            </div>
+            <p id="status"></p>
+            <div id="stats">
+                <p>
+                    Vittorie Giocatore 1: <span id="winsX">0</span>
+                </p>
+                <p>
+                    Vittorie Giocatore 2: <span id="winsO">0</span>
+                </p>
+                <div id="moveLog">
+                    <h3>Log delle mosse</h3>
+                    <ul id="logList"></ul>
+                </div>
+            </div>        
+        </div>
+
+        <div id="customTooltip" class="tooltip" style="display: none;"></div>
+        
+        <script src="script.js"></script>
+    </body>
 </html>

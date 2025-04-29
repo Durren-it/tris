@@ -5,6 +5,7 @@ const statusDisplay = document.getElementById('status');
 const themeSelector = document.getElementById('theme');
 const resetScoreButton = document.getElementById('resetScoreButton');
 const logList = document.getElementById('logList');
+const tooltip = document.getElementById('customTooltip');
 let currentPlayer = 'X';
 let playerSymbols = {
     X: 'X',
@@ -93,6 +94,29 @@ function handleCellClick(event) {
         statusDisplay.textContent = `Turno di ${getPlayerName(currentPlayer)}`;
     }
 }
+
+// Gestion del tooltip
+cells.forEach((cell, index) => {
+    const row = Math.floor(index / 3) + 1;
+    const col = (index % 3) + 1;
+    const cellName = `Riga ${row}, Colonna ${col}`;
+
+    cell.addEventListener('mouseover', (e) => {
+        tooltip.textContent = cellName;
+        tooltip.style.display = 'block';
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY + 10 + 'px';
+    });
+
+    cell.addEventListener('mousemove', (e) => {
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY + 10 + 'px';
+    });
+
+    cell.addEventListener('mouseout', () => {
+        tooltip.style.display = 'none';
+    });
+});
 
 // Funzione di log delle mosse
 function addMoveToLog(player, index) {
