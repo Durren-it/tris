@@ -29,5 +29,5 @@ Il progetto è composto da tre file principali:
 
 Il progetto originale, sul quale sono state fatte le varie evolutive, è presente qui:
     ```bash
-    https://github.com/unozer/tris.git
+    git clone https://github.com/unozer/tris.git
     ```
