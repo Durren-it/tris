@@ -28,6 +28,6 @@ Il progetto è composto da tre file principali:
 ## Crediti
 
 Il progetto originale, sul quale sono state fatte le varie evolutive, è presente qui:
-    ```bash
-    git clone https://github.com/unozer/tris.git
+    ```
+    https://github.com/unozer/tris.git
     ```
